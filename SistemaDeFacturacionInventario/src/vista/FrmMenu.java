@@ -5,6 +5,8 @@
 package vista;
 
 import java.awt.Dimension;
+import javax.swing.JDesktopPane;
+
 
 
 /**
@@ -12,6 +14,8 @@ import java.awt.Dimension;
  * @author Carlos
  */
 public class FrmMenu extends javax.swing.JFrame {
+    
+    public static JDesktopPane jDesktopPane_menu;
 
     /**
      * Creates new form FrmMenu
@@ -22,6 +26,14 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de Ventas");
+        
+        this.setLayout(null);
+        jDesktopPane_menu = new JDesktopPane();
+        
+        int anchura = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int altura = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.jDesktopPane_menu.setBounds(0, 0, anchura, (altura - 110 ));
+        this.add(jDesktopPane_menu);
         
     }
 
