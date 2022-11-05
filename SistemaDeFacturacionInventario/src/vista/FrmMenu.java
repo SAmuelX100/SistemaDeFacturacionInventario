@@ -5,8 +5,11 @@
 package vista;
 
 import java.awt.Dimension;
+<<<<<<< HEAD
 import javax.swing.JDesktopPane;
 
+=======
+>>>>>>> 4182d1816b3e975e5d7f103cf34feeddc95eefd5
 
 
 /**
@@ -14,8 +17,11 @@ import javax.swing.JDesktopPane;
  * @author Carlos
  */
 public class FrmMenu extends javax.swing.JFrame {
+<<<<<<< HEAD
     
     public static JDesktopPane jDesktopPane_menu;
+=======
+>>>>>>> 4182d1816b3e975e5d7f103cf34feeddc95eefd5
 
     /**
      * Creates new form FrmMenu
@@ -27,6 +33,7 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de Ventas");
         
+<<<<<<< HEAD
         this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
         
@@ -35,6 +42,8 @@ public class FrmMenu extends javax.swing.JFrame {
         this.jDesktopPane_menu.setBounds(0, 0, anchura, (altura - 110 ));
         this.add(jDesktopPane_menu);
         
+=======
+>>>>>>> 4182d1816b3e975e5d7f103cf34feeddc95eefd5
     }
 
     /**
