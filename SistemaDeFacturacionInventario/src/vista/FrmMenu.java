@@ -164,6 +164,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem9_nuevaCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
         jMenuItem9_nuevaCategoria.setText("Nueva Categoría");
         jMenuItem9_nuevaCategoria.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem9_nuevaCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9_nuevaCategoriaActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem9_nuevaCategoria);
 
         jMenuItem10_gestionarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
@@ -266,6 +271,12 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jMenuItem10_gestionarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10_gestionarCategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10_gestionarCategoriaActionPerformed
+
+    private void jMenuItem9_nuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9_nuevaCategoriaActionPerformed
+       InterCategoria interCategoria = new InterCategoria();
+       jDesktopPane_menu.add(interCategoria);
+       interCategoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9_nuevaCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
