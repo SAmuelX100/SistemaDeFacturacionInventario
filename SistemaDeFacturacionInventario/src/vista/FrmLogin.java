@@ -177,7 +177,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuarioActionPerformed
 
     private void jButton1_iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_iniciarSesionActionPerformed
-     
+        this.Login();
     }//GEN-LAST:event_jButton1_iniciarSesionActionPerformed
 
     /**
