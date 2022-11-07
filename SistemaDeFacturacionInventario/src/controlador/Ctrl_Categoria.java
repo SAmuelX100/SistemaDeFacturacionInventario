@@ -1,13 +1,10 @@
 package controlador;
 
 import Conexion.Conexion;
-import com.mysql.jdbc.ResultSetInternalMethods;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLDataException;
 import modelo.Categoria;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 /**

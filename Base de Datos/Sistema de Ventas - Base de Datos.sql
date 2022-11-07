@@ -56,6 +56,13 @@ idCategoria int(11) not null,
 estado int(1) not null
 );
 
+select * from tb_producto;
+
+alter table tb_producto
+	change porcentajeIva porcentajeItbis int(2) not null;
+    
+select * from tb_producto;
+
 -- crear tabla cabecera de venta
 create table tb_cabecera_venta(
 idCabeceraVenta int (11) auto_increment primary key,

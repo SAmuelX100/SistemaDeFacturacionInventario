@@ -115,6 +115,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem3_nuevoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-producto.png"))); // NOI18N
         jMenuItem3_nuevoProducto.setText("Nuevo Producto");
         jMenuItem3_nuevoProducto.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem3_nuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3_nuevoProductoActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3_nuevoProducto);
 
         jMenuItem5_gestionarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
@@ -279,6 +284,12 @@ public class FrmMenu extends javax.swing.JFrame {
        jDesktopPane_menu.add(interCategoria);
        interCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem9_nuevaCategoriaActionPerformed
+
+    private void jMenuItem3_nuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3_nuevoProductoActionPerformed
+       InterProducto interProducto = new InterProducto();
+       jDesktopPane_menu.add(interProducto);
+       interProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3_nuevoProductoActionPerformed
 
     /**
      * @param args the command line arguments
