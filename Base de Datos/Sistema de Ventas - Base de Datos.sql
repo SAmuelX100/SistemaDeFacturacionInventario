@@ -32,6 +32,7 @@ telefono varchar(15) not null,
 direccion varchar(100) not null,
 estado int(1) not null
 );
+select * from tb_cliente;
 
 -- crear tabla categoria
 create table tb_categoria(

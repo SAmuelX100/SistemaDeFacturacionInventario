@@ -152,6 +152,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem7_nuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
         jMenuItem7_nuevoCliente.setText("Nuevo Cliente");
         jMenuItem7_nuevoCliente.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem7_nuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7_nuevoClienteActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7_nuevoCliente);
 
         jMenuItem8_gestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
@@ -275,7 +280,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6_actualizarStockActionPerformed
 
     private void jMenuItem8_gestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8_gestionarClienteActionPerformed
-        // TODO add your handling code here:
+       InterGestionarCliente interGestionarCliente = new InterGestionarCliente();
+       jDesktopPane_menu.add(interGestionarCliente);
+       interGestionarCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem8_gestionarClienteActionPerformed
 
     private void jMenuItem10_gestionarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10_gestionarCategoriaActionPerformed
@@ -301,6 +308,12 @@ public class FrmMenu extends javax.swing.JFrame {
        jDesktopPane_menu.add(interGestionarProducto);
        interGestionarProducto.setVisible(true);
     }//GEN-LAST:event_jMenuItem5_gestionarProductoActionPerformed
+
+    private void jMenuItem7_nuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7_nuevoClienteActionPerformed
+       InterCliente interCliente = new InterCliente();
+       jDesktopPane_menu.add(interCliente);
+       interCliente.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7_nuevoClienteActionPerformed
 
     /**
      * @param args the command line arguments
