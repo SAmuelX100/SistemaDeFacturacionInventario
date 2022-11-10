@@ -66,7 +66,6 @@ from tb_producto As p, tb_categoria As c
 where p.idCategoria = c.idCategoria;
 
 
-;
 
 
 -- crear tabla cabecera de venta
