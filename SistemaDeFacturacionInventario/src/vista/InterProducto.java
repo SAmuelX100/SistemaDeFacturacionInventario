@@ -18,7 +18,7 @@ import modelo.Producto;
  */
 public class InterProducto extends javax.swing.JInternalFrame {
 
-    int obternerIdCategoriaCombo = 0;
+    int obtenerIdCategoriaCombo = 0;
 
     public InterProducto() {
         initComponents();
@@ -185,13 +185,13 @@ public class InterProducto extends javax.swing.JInternalFrame {
                                 producto.setPorcentajeItbis(0);
                             } else if (itbis.equalsIgnoreCase("16%")) {
                                 producto.setPorcentajeItbis(16);
-                            } else if (itbis.equalsIgnoreCase("%18")) {
+                            } else if (itbis.equalsIgnoreCase("18%")) {
                                 producto.setPorcentajeItbis(18);
                             }
 
                             //idCategoria - cargar metodo
                             this.IdCategoria();
-                            producto.setIdCategoria(obternerIdCategoriaCombo);
+                            producto.setIdCategoria(obtenerIdCategoriaCombo);
                             producto.setEstado(1);
 
                             if (controlProducto.guardar(producto)) {
@@ -287,14 +287,14 @@ public class InterProducto extends javax.swing.JInternalFrame {
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                obternerIdCategoriaCombo = rs.getInt("idCategoria");
+                obtenerIdCategoriaCombo = rs.getInt("idCategoria");
             }
 
         } catch (SQLException e) {
             System.out.println("error al obtener id Categoria");
         }
 
-        return obternerIdCategoriaCombo;
+        return obtenerIdCategoriaCombo;
     }
 
 }

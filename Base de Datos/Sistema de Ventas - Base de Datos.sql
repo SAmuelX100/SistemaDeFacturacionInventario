@@ -56,12 +56,17 @@ idCategoria int(11) not null,
 estado int(1) not null
 );
 
-select * from tb_producto;
-
 alter table tb_producto
 	change porcentajeIva porcentajeItbis int(2) not null;
     
 select * from tb_producto;
+
+select p.idProducto, p.nombre, p.cantidad, p.precio, p.descripcion, p.porcentajeItbis, c.descripcion, p.estado
+from tb_producto As p, tb_categoria As c
+where p.idCategoria = c.idCategoria;
+
+
+
 
 -- crear tabla cabecera de venta
 create table tb_cabecera_venta(
