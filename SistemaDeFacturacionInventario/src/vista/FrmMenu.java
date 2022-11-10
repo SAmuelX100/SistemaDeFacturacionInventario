@@ -125,6 +125,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem5_gestionarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
         jMenuItem5_gestionarProducto.setText("Gestionar Productos");
         jMenuItem5_gestionarProducto.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem5_gestionarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5_gestionarProductoActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5_gestionarProducto);
 
         jMenuItem6_actualizarStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
@@ -290,6 +295,12 @@ public class FrmMenu extends javax.swing.JFrame {
        jDesktopPane_menu.add(interProducto);
        interProducto.setVisible(true);
     }//GEN-LAST:event_jMenuItem3_nuevoProductoActionPerformed
+
+    private void jMenuItem5_gestionarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5_gestionarProductoActionPerformed
+       InterGestionarProducto interGestionarProducto = new InterGestionarProducto();
+       jDesktopPane_menu.add(interGestionarProducto);
+       interGestionarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5_gestionarProductoActionPerformed
 
     /**
      * @param args the command line arguments

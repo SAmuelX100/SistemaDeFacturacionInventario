@@ -66,6 +66,64 @@ public class Ctrl_Producto {
 
         return respuesta;
 
+    }   
+
+    // Metodo paara actualizar productos
+    
+    public boolean actualizar(Producto objeto, int idProducto) {
+        boolean respuesta = false;
+
+        Connection cn = Conexion.conectar();
+
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("update tb_producto set nombre=?, cantidad=?, precio=?, descripcion=?, porcentajeItbis=?, idCategoria=?, estado=? where idProducto = '" + idProducto + "'");
+            consulta.setString(1, objeto.getNombre());
+            consulta.setInt(2, objeto.getCantidad());
+            consulta.setDouble(3, objeto.getPrecio());
+            consulta.setString(4, objeto.getDescripcion());
+            consulta.setInt(5, objeto.getPorcentajeItbis());
+            consulta.setInt(6, objeto.getIdCategoria());
+            consulta.setInt(7, objeto.getEstado());
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+
+            cn.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println("Error al actualizar" + e);
+        }
+
+        return respuesta;
+
+    }
+    
+    // Metodo para eliminar categoria
+    public boolean eliminar (int idProducto) {
+        boolean respuesta = false;
+
+        Connection cn = Conexion.conectar();
+
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement(" delete from tb_producto where idProducto = '"+ idProducto + "'");
+            consulta.executeUpdate();
+           
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+
+            cn.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println("Error al eliminar");
+        }
+
+        return respuesta;
+
     }
     
     
