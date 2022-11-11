@@ -103,6 +103,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem2_gestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
         jMenuItem2_gestionarUsuario.setText("Gestionar Usuario");
         jMenuItem2_gestionarUsuario.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem2_gestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2_gestionarUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2_gestionarUsuario);
 
         jMenuBar1.add(jMenu1);
@@ -262,6 +267,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem18_cerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         jMenuItem18_cerrarSesion.setText("Cerrar Sesión");
         jMenuItem18_cerrarSesion.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem18_cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18_cerrarSesionActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem18_cerrarSesion);
 
         jMenuBar1.add(jMenu8);
@@ -272,11 +282,15 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1_nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_nuevoUsuarioActionPerformed
-        // TODO add your handling code here:
+       InterUsuario interUsuario = new InterUsuario();
+       jDesktopPane_menu.add(interUsuario);
+       interUsuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem1_nuevoUsuarioActionPerformed
 
     private void jMenuItem6_actualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6_actualizarStockActionPerformed
-        // TODO add your handling code here:
+       InterActualizarStock interActualizarStock= new InterActualizarStock();
+       jDesktopPane_menu.add(interActualizarStock);
+       interActualizarStock.setVisible(true);
     }//GEN-LAST:event_jMenuItem6_actualizarStockActionPerformed
 
     private void jMenuItem8_gestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8_gestionarClienteActionPerformed
@@ -314,6 +328,16 @@ public class FrmMenu extends javax.swing.JFrame {
        jDesktopPane_menu.add(interCliente);
        interCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem7_nuevoClienteActionPerformed
+
+    private void jMenuItem18_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18_cerrarSesionActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem18_cerrarSesionActionPerformed
+
+    private void jMenuItem2_gestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2_gestionarUsuarioActionPerformed
+       InterGestionarUsuario interGestionarUsuario = new InterGestionarUsuario();
+       jDesktopPane_menu.add(interGestionarUsuario);
+       interGestionarUsuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2_gestionarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
