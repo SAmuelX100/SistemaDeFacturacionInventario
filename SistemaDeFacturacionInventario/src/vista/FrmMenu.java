@@ -211,6 +211,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem11_nuevaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir.png"))); // NOI18N
         jMenuItem11_nuevaVenta.setText("Nueva Venta");
         jMenuItem11_nuevaVenta.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem11_nuevaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11_nuevaVentaActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem11_nuevaVenta);
 
         jMenuItem12_gestionarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
@@ -338,6 +343,12 @@ public class FrmMenu extends javax.swing.JFrame {
        jDesktopPane_menu.add(interGestionarUsuario);
        interGestionarUsuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem2_gestionarUsuarioActionPerformed
+
+    private void jMenuItem11_nuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11_nuevaVentaActionPerformed
+        InterFacturacion interFacturacion = new InterFacturacion();
+        jDesktopPane_menu.add(interFacturacion);
+        interFacturacion.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11_nuevaVentaActionPerformed
 
     /**
      * @param args the command line arguments
