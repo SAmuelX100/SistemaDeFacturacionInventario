@@ -38,7 +38,7 @@ public class Ctrl_Cliente {
             cn.close();
 
         } catch (java.sql.SQLException e) {
-            System.out.println("Error al guardar cliente");
+            System.out.println("Error al guardar cliente" + e);
         }
 
         return respuesta;

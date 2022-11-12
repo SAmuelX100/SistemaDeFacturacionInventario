@@ -1,7 +1,7 @@
 -- crear nuestra base de datos
-create database bd_sistema_ventas;
+create database bd_sistema_facturacion;
 -- usamos la base de datos
-use bd_sistema_ventas;
+use bd_sistema_facturacion;
 
 -- crear tabla usuarios
 create table tb_usuario(
@@ -14,11 +14,10 @@ telefono varchar(15) not null,
 estado int(1) not null
 );
 
-insert into tb_usuario(nombre, apellido, usuario, password, telefono,estado)
+insert into tb_usuario(nombre, apellido, usuario, password, telefono, estado)
 values("Carlos", "Saint-Hilaire", "carlos", "12345","8291230000",1);
 
 select * from tb_usuario;
-
 
 select usuario, password from tb_usuario where usuario = "carlos" and password = "12345";
 
@@ -52,22 +51,16 @@ nombre varchar(100) not null,
 cantidad int(11) not null,
 precio double(10,2) not null,
 descripcion varchar(200) not null,
-porcentajeIva int(2) not null,
+porcentajeItbis int(2) not null,
 idCategoria int(11) not null,
 estado int(1) not null
 );
-
-alter table tb_producto
-	change porcentajeIva porcentajeItbis int(2) not null;
     
 select * from tb_producto;
 
 select p.idProducto, p.nombre, p.cantidad, p.precio, p.descripcion, p.porcentajeItbis, c.descripcion, p.estado
 from tb_producto As p, tb_categoria As c
 where p.idCategoria = c.idCategoria;
-
-
-
 
 -- crear tabla cabecera de venta
 create table tb_cabecera_venta(
@@ -87,10 +80,12 @@ cantidad int(11) not null,
 precioUnitario double(10,2) not null,
 subtotal double(10,2) not null,
 descuento double(10,2) not null,
-iva double(10,2) not null,
+itbis double(10,2) not null,
 totalPagar double(10,2) not null,
 estado int(1) not null
 );
 
+select * from tb_cabecera_venta;
+select * from tb_detalle_venta;
 -- mostrar todas las tablas de mi base de datos
 show tables;
