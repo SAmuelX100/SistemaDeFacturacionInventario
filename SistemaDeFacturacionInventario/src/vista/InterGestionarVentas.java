@@ -16,10 +16,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import modelo.CabeceraVenta;
 
-
-
-
-
 /**
  *
  * @author Cerb
@@ -404,7 +400,6 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
             System.out.println("¡Error al cargar clientes, !" + e);
         }
     }
-        
 }
 
 

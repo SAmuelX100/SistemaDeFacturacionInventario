@@ -15,10 +15,7 @@ import javax.swing.JDesktopPane;
  * @author Carlos
  */
 public class FrmMenu extends javax.swing.JFrame {
-
-    
     public static JDesktopPane jDesktopPane_menu;
-
 
     /**
      * Creates new form FrmMenu
@@ -30,7 +27,6 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de Ventas");
         
-
         this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
         
@@ -38,8 +34,6 @@ public class FrmMenu extends javax.swing.JFrame {
         int altura = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         this.jDesktopPane_menu.setBounds(0, 0, anchura, (altura - 110 ));
         this.add(jDesktopPane_menu);
-        
-
     }
 
     /**
