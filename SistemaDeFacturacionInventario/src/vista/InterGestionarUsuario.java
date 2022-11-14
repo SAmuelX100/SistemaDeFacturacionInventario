@@ -7,11 +7,14 @@ import java.sql.Connection;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 import java.sql.PreparedStatement;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 
@@ -31,7 +34,10 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         //carga tabla
         this.CargarTablaUsuario();
         
-       
+        ImageIcon wallpaper = new ImageIcon("src/img/wavy-gradient-dark-green.png");
+        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(900, 500, WIDTH));
+        jLabel_wallpaper.setIcon(icono);
+        this.repaint();
 
     }
   
@@ -63,6 +69,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         txt_apellido = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
         txt_usuario = new javax.swing.JTextField();
+        jLabel_wallpaper = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -71,6 +78,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Administrar Usuarios");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
@@ -157,6 +165,9 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 80));
 
+        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/wavy-gradient-dark-green.png"))); // NOI18N
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 890, 520));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,6 +235,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
