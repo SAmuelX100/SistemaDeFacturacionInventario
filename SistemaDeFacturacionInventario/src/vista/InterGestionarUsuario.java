@@ -166,7 +166,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 80));
 
         jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/wavy-gradient-dark-green.png"))); // NOI18N
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 890, 520));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 910, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
