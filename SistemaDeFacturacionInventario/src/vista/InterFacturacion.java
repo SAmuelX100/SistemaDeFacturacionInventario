@@ -8,6 +8,7 @@ import java.sql.Connection;
 import Conexion.Conexion;
 import java.sql.PreparedStatement;
 import controlador.Ctrl_RegistrarVenta;
+import controlador.ventaPDF;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -343,6 +344,12 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
                 if (controlVenta.guardar(cabeceraVenta)) {
                     JOptionPane.showMessageDialog(null, "¡Venta Registrada!");
                     
+                    //Generar la factura de venta
+                    
+                    ventaPDF pdf= new ventaPDF();
+                    pdf.DatosCliente(idCliente);
+                    pdf.generarFacturaPDF();
+                    
                     // Guardar detalle
                     for (DetalleVenta elemento : listaProductos) {
                         detalleVenta.setIdDetalleVenta(0);
@@ -548,16 +555,16 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable_productos;
-    private javax.swing.JTextField txt_cambio;
+    public static javax.swing.JTextField txt_cambio;
     private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_cliente_buscar;
     private javax.swing.JTextField txt_descuento;
     private javax.swing.JTextField txt_efectivo;
     private javax.swing.JTextField txt_itbis;
     private javax.swing.JTextField txt_subtotal;
-    private javax.swing.JTextField txt_total_pagar;
+    public static javax.swing.JTextField txt_total_pagar;
     // End of variables declaration//GEN-END:variables
 
     /* 
@@ -737,6 +744,12 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
             cn.close();
         } catch (SQLException e) {
             System.out.println("Error al restar cantidad, " + e);
+        }
+    }
+
+    private static class VentaPDF {
+
+        public VentaPDF() {
         }
     }
 }

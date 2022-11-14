@@ -82,7 +82,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(150, 50));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
@@ -221,6 +220,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem12_gestionarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
         jMenuItem12_gestionarVenta.setText("Gestionar Ventas");
         jMenuItem12_gestionarVenta.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem12_gestionarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12_gestionarVentaActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem12_gestionarVenta);
 
         jMenuBar1.add(jMenu5);
@@ -349,6 +353,13 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane_menu.add(interFacturacion);
         interFacturacion.setVisible(true);
     }//GEN-LAST:event_jMenuItem11_nuevaVentaActionPerformed
+
+    private void jMenuItem12_gestionarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12_gestionarVentaActionPerformed
+        // TODO add your handling code here:
+        InterGestionarVentas interGestionarVentas = new InterGestionarVentas();
+        jDesktopPane_menu.add(interGestionarVentas);
+        interGestionarVentas.setVisible(true);
+    }//GEN-LAST:event_jMenuItem12_gestionarVentaActionPerformed
 
     /**
      * @param args the command line arguments
