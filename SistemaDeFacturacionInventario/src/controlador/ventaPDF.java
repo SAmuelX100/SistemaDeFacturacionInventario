@@ -81,7 +81,7 @@ public class ventaPDF {
             // cambiar el formato de la fecha de / a _    
             String fechaNueva = "";
             for (int i = 0; i < fechaActual.length(); i++) {
-                if (fechaNueva.charAt(i) == '/') {
+                if (fechaActual.charAt(i) == '/') {
                     fechaNueva = fechaActual.replace("/", "_");
 
                 }
