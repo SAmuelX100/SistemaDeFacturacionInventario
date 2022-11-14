@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import modelo.CabeceraVenta;
 import modelo.DetalleVenta;
-import modelo.Cliente;
 import java.sql.ResultSet;
 
 /**
@@ -83,6 +82,33 @@ public class Ctrl_RegistrarVenta {
 
         } catch (java.sql.SQLException e) {
             System.out.println("Error al guardar cliente" + e);
+        }
+
+        return respuesta;
+
+    }
+    
+    public boolean actualizar(CabeceraVenta objeto, int idCabeceraVenta) {
+        boolean respuesta = false;
+
+        Connection cn = Conexion.conectar();
+
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("update tb_cabecera_venta set idCliente =?, estado=? "
+                    + "where idCabeceraVenta = '" + idCabeceraVenta + "'");
+            consulta.setInt(1, objeto.getIdCliente());
+            
+            consulta.setInt(2, objeto.getEstado());
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+
+            cn.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println("Error al actualizar cabecera de venta" + e);
         }
 
         return respuesta;
