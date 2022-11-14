@@ -1,6 +1,5 @@
 package vista;
 
-
 import java.awt.Dimension;
 import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.Icon;
@@ -79,7 +78,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         txt_total_pagar.setText("0.0");
 
         // Insertar imagen en nuestro JLabel
-        ImageIcon wallpaper = new ImageIcon("src/img/fondo3.jpg");
+        ImageIcon wallpaper = new ImageIcon("src/img/wavy-gradient-dark-green.png");
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(800, 600, WIDTH));
         jLabel_wallpaper.setIcon(icono);
         this.repaint();

@@ -3,12 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
 import java.awt.Dimension;
-
 import javax.swing.JDesktopPane;
-
-
 
 /**
  *
@@ -25,7 +21,7 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setSize(new Dimension(1200,700));
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
-        this.setTitle("Sistema de Ventas");
+        this.setTitle("SISTEMA DE FACTURACION E INVENTARIOS");
         
         this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
@@ -47,6 +43,9 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem7_nuevoCliente = new javax.swing.JMenuItem();
+        jMenuItem8_gestionarCliente = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1_nuevoUsuario = new javax.swing.JMenuItem();
         jMenuItem2_gestionarUsuario = new javax.swing.JMenuItem();
@@ -54,9 +53,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem3_nuevoProducto = new javax.swing.JMenuItem();
         jMenuItem5_gestionarProducto = new javax.swing.JMenuItem();
         jMenuItem6_actualizarStock = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem7_nuevoCliente = new javax.swing.JMenuItem();
-        jMenuItem8_gestionarCliente = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9_nuevaCategoria = new javax.swing.JMenuItem();
         jMenuItem10_gestionarCategoria = new javax.swing.JMenuItem();
@@ -77,6 +73,33 @@ public class FrmMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
+        jMenu3.setText("Cliente");
+        jMenu3.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        jMenuItem7_nuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
+        jMenuItem7_nuevoCliente.setText("Nuevo Cliente");
+        jMenuItem7_nuevoCliente.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem7_nuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7_nuevoClienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem7_nuevoCliente);
+
+        jMenuItem8_gestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
+        jMenuItem8_gestionarCliente.setText("Gestionar Clientes");
+        jMenuItem8_gestionarCliente.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem8_gestionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8_gestionarClienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem8_gestionarCliente);
+
+        jMenuBar1.add(jMenu3);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
         jMenu1.setText("Usuario");
@@ -141,33 +164,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6_actualizarStock);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
-        jMenu3.setText("Cliente");
-        jMenu3.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
-
-        jMenuItem7_nuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
-        jMenuItem7_nuevoCliente.setText("Nuevo Cliente");
-        jMenuItem7_nuevoCliente.setPreferredSize(new java.awt.Dimension(180, 30));
-        jMenuItem7_nuevoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7_nuevoClienteActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem7_nuevoCliente);
-
-        jMenuItem8_gestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/configuraciones.png"))); // NOI18N
-        jMenuItem8_gestionarCliente.setText("Gestionar Clientes");
-        jMenuItem8_gestionarCliente.setPreferredSize(new java.awt.Dimension(180, 30));
-        jMenuItem8_gestionarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8_gestionarClienteActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem8_gestionarCliente);
-
-        jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
         jMenu4.setText("Categoría");

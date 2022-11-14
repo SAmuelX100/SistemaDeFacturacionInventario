@@ -49,9 +49,9 @@ public class FrmLogear extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(175, 160, 240));
+        kGradientPanel1.setkEndColor(new java.awt.Color(3, 128, 34));
         kGradientPanel1.setkGradientFocus(0);
-        kGradientPanel1.setkStartColor(new java.awt.Color(43, 90, 253));
+        kGradientPanel1.setkStartColor(new java.awt.Color(42, 245, 152));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -83,7 +83,7 @@ public class FrmLogear extends javax.swing.JFrame {
             }
         });
 
-        jButton_IniciarSesion.setBackground(new java.awt.Color(252, 0, 255));
+        jButton_IniciarSesion.setBackground(new java.awt.Color(51, 102, 255));
         jButton_IniciarSesion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_IniciarSesion.setText("Iniciar Sesión");
         jButton_IniciarSesion.addActionListener(new java.awt.event.ActionListener() {
