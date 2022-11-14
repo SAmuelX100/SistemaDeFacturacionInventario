@@ -4,6 +4,9 @@
  */
 package controlador;
 
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import Conexion.Conexion;
@@ -42,7 +45,7 @@ public class ventaPDF {
     private String nombreArchivoPDFventa = "";
 
     //metodo para obtener datos de clientes
-    public void DatosCliente(int idCliente) throws java.sql.SQLException {
+    public void DatosCliente(int idCliente) {
 
         Connection cn = (Connection) Conexion.conectar();
         String sql = "select * from tb_cliente= '" + idCliente + "'";
@@ -91,7 +94,7 @@ public class ventaPDF {
             archivo = new FileOutputStream(file);
 
             Document doc = new Document();
-            pdfWriter.getInstance(doc, archivo);
+            PdfWriter.getInstance(doc, archivo);
             doc.open();
 
             Image img = Image.getInstance("src/img/ventas.png");
@@ -103,10 +106,9 @@ public class ventaPDF {
             
             //encabezado
             
-            pdfpTable Encabezado = new pdfpTable(4);
+            PdfPTable Encabezado = new PdfPTable(4);
             Encabezado.setWidthPercentage(100);
-            Encabezado.getDefaultCell().
-            Encabezado.getDefaultCell().setBorder();// quitar borde de la tabla
+            Encabezado.getDefaultCell().setBorder(0);// quitar borde de la tabla
             
             //tamaño de las celdas
             
@@ -139,18 +141,18 @@ public class ventaPDF {
             
                     
           //datos del cliente
-          pdfpTable tablaCliente = new pdfpTable(4);
-          tablaCliente.setWidthpercentage(100);
+          PdfPTable tablaCliente = new PdfPTable(4);
+          tablaCliente.setWidthPercentage(100);
           tablaCliente.getDefaultCell().setBorder(0);//quitar bordes
           
           //tamaño de las celdas
           float[] ColumnaCliente = new float[]{25f, 45f, 30f, 40f};
           tablaCliente.setWidths(ColumnaCliente);
           tablaCliente.setHorizontalAlignment(Element.ALIGN_LEFT);
-          pdfpCell cliente1= new pdfpCell(new Phrase("Cedula/RNC;", negrita));
-          pdfpCell cliente2= new pdfpCell(new Phrase("Nombre;", negrita));
-          pdfpCell cliente3= new pdfpCell(new Phrase("Telefono;", negrita));
-          pdfpCell cliente4= new pdfpCell(new Phrase("Direccion;", negrita));
+          PdfPCell cliente1= new PdfPCell(new Phrase("Cedula/RNC;", negrita));
+          PdfPCell cliente2= new PdfPCell(new Phrase("Nombre;", negrita));
+          PdfPCell cliente3= new PdfPCell(new Phrase("Telefono;", negrita));
+          PdfPCell cliente4= new PdfPCell(new Phrase("Direccion;", negrita));
           
           //quitar bordes
           cliente1.setBorder(0);
@@ -181,7 +183,7 @@ public class ventaPDF {
           
           //agregar producto
           
-          pdfpTable tablaProducto = new pdfpTable(4);
+          PdfPTable tablaProducto = new PdfPTable(4);
           tablaProducto.setWidthPercentage(100);
           tablaProducto.getDefaultCell().setBorder(0);
           //tamaño de celdas
@@ -189,10 +191,10 @@ public class ventaPDF {
            float[] ColumnaProducto = new float[]{15f, 50f, 15f, 20f};
           tablaProducto.setWidths(ColumnaProducto);
           tablaProducto.setHorizontalAlignment(Element.ALIGN_LEFT);
-          pdfpCell producto1= new pdfpCell(new Phrase("Cantidad;", negrita));
-          pdfpCell Producto2= new pdfpCell(new Phrase("Descripcion;", negrita));
-          pdfpCell producto3= new pdfpCell(new Phrase("Precio Unitario;", negrita));
-          pdfpCell producto4= new pdfpCell(new Phrase("Precio Total;", negrita));
+          PdfPCell producto1= new PdfPCell(new Phrase("Cantidad;", negrita));
+          PdfPCell Producto2= new PdfPCell(new Phrase("Descripcion;", negrita));
+          PdfPCell producto3= new PdfPCell(new Phrase("Precio Unitario;", negrita));
+          PdfPCell producto4= new PdfPCell(new Phrase("Precio Total;", negrita));
           
           //quitar bordes
           

@@ -1,5 +1,6 @@
 package vista;
 
+
 import java.awt.Dimension;
 import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.Icon;
