@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import java.sql.PreparedStatement;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.CabeceraVenta;
 
 /**
@@ -33,7 +34,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         
         //cargar tabla
         this.CargarComboClientes();
-        this.CargarTablaventas();
+        this.CargarTablaVentas();
                        
         //insertar imagen en nuestro JLabel
         
@@ -57,7 +58,6 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_ventas = new javax.swing.JTable();
-        jComboBox_cliente = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jButton_actualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -67,7 +67,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jComboBox_estado = new javax.swing.JComboBox<>();
-        jComboBox_cliente2 = new javax.swing.JComboBox<>();
+        jComboBox_cliente = new javax.swing.JComboBox<>();
         txt_total_pagar = new javax.swing.JTextField();
         jLabel_wallpaper = new javax.swing.JLabel();
 
@@ -100,9 +100,6 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable_ventas);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 710, 250));
-
-        jComboBox_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente:", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 170, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 730, 270));
 
@@ -162,13 +159,13 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         });
         jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 170, -1));
 
-        jComboBox_cliente2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente:", "Angel Fernandez", "Dariel gomez" }));
-        jComboBox_cliente2.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente:", "Angel Fernandez", "Dariel gomez" }));
+        jComboBox_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox_cliente2ActionPerformed(evt);
+                jComboBox_clienteActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox_cliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 170, -1));
+        jPanel3.add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 170, -1));
 
         txt_total_pagar.setEnabled(false);
         txt_total_pagar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,47 +188,40 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         String cliente, estado;
         cliente = jComboBox_cliente.getSelectedItem().toString().trim();
         estado = jComboBox_estado.getSelectedItem().toString().trim();
-        
-        //obtener id del cliente
-        try{
-        Connection cn = Conexion.conectar();
-        PreparedStatement pst = cn.prepareStatement("select idCliente, concat(nombre, ' ', apellido) as cliente"
-                + " from tb_cliente where concat(nombre, ' ', apellido)='" + cliente + "'");
-        
-        ResultSet rs= pst.executeQuery();
-        if(rs.next()){
-        idCliente = rs.getInt("idCliente");
-               
+
+        //obtener el id del cliente
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(
+                    "select idCliente, concat(nombre, ' ', apellido) as cliente "
+                    + "from tb_cliente where concat(nombre, ' ', apellido) = '" + cliente + "'");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                idCliente = rs.getInt("idCliente");
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error en cargar el id cliente: " + e);
         }
-        cn.close();
-        }catch(SQLException e){
-            
-            System.out.println("Error en cargar el id cliente: " + e );
-                
-        }
-        
+
         //Actualizar datos
-        if(!cliente.equalsIgnoreCase("Seleccione cliente:")){
-           cabeceraVenta.setIdCliente(idCliente);
-           if(estado.equalsIgnoreCase("Activo")){
-                cabeceraVenta.getEstado(1);
-           
-           }else{
-           cabeceraVenta.getEstado(0);
-           
-           } 
-           
-           if(controlRegistrarVenta.actualizar(cabeceraVenta, idVenta)){
-               JOptionpane.showMessageDialog(null,"!Registro Actualizado!");
-               this.CargarTablaventas();
-               this.Limpiar();
-               
-           }else{
-               JOptionpane.showMessageDialog(null,"!Error al Actualizar!");
-             }
-           
-            }else{
-        JOptionpane.showMessageDialog(null,"seleccione un registro para actualizar datos");
+        if (!cliente.equalsIgnoreCase("Seleccione cliente:")) {
+            cabeceraVenta.setIdCliente(idCliente);
+            if (estado.equalsIgnoreCase("Activo")) {
+                cabeceraVenta.setEstado(1);
+            } else {
+                cabeceraVenta.setEstado(0);
+            }
+
+            if (controlRegistrarVenta.actualizar(cabeceraVenta, idVenta)) {
+                JOptionPane.showMessageDialog(null, "¡Registro Actualizado!");
+                this.CargarTablaVentas();
+                this.Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Actualizar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un registro para actualizar datos");
         }
   
     }//GEN-LAST:event_jButton_actualizarActionPerformed
@@ -248,15 +238,14 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fechaActionPerformed
 
-    private void jComboBox_cliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_cliente2ActionPerformed
+    private void jComboBox_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_clienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox_cliente2ActionPerformed
+    }//GEN-LAST:event_jComboBox_clienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_actualizar;
     private javax.swing.JComboBox<String> jComboBox_cliente;
-    private javax.swing.JComboBox<String> jComboBox_cliente2;
     private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -289,11 +278,11 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
      * metodo para mostrar todos los clientes registrados
      * *****************************************************
      */
-    private void CargarTablaventas() {
+    private void CargarTablaVentas() {
         Connection con = Conexion.conectar();
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "select cv.idCabeceraVenta as id, concat(c.nombre, ' ',c.apellido) as cliente,"
-                + " cv.valorPagar as total, cv.fechaVenta as fecha, cv.estado "
+        String sql = "select cv.idCabeceraVenta as id, concat(c.nombre, ' ', c.apellido) as cliente, "
+                + "cv.valorPagar as total, cv.fechaVenta as fecha, cv.estado "
                 + "from tb_cabecera_venta as cv, tb_cliente as c where cv.idCliente = c.idCliente;";
         Statement st;
         try {
@@ -304,27 +293,23 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 
             model.addColumn("N°");//ID
             model.addColumn("Cliente");
-            model.addColumn("Total pagar");
-            model.addColumn("fecha venta");          
+            model.addColumn("Total Pagar");
+            model.addColumn("Fecha Venta");
             model.addColumn("estado");
 
             while (rs.next()) {
                 Object fila[] = new Object[5];
                 for (int i = 0; i < 5; i++) {
-                    fila[i] = rs.getObject(i + 1);
-                    
-                    if(i==4){
-                    String estado= String.valueOf(rs.getObject(i+1));
-                        if(estado.equalsIgnoreCase("1")){
-                            fila[i]="Activo";
-                        }else{
-                        fila[i]="Inactivo";
+                    if (i == 4) {
+                        String estado = String.valueOf(rs.getObject(i + 1));
+                        if (estado.equalsIgnoreCase("1")) {
+                            fila[i] = "Activo";
+                        } else {
+                            fila[i] = "Inactivo";
                         }
-                    }else{
-                    fila[i] = rs.getObject(i + 1);
+                    } else {
+                        fila[i] = rs.getObject(i + 1);
                     }
-                    
-                    
                 }
                 model.addRow(fila);
             }
@@ -341,8 +326,8 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
                 int columna_point = 0;
 
                 if (fila_point > -1) {
-                    idVenta= (int) model.getValueAt(fila_point, columna_point);
-                    EnviarDatosventaSeleccionada(idVenta);//metodo
+                    idVenta = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosVentaSeleccionada(idVenta);//metodo
                 }
             }
         });
@@ -353,41 +338,38 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
      * Metodo que envia datos seleccionados
      * **************************************************
      */
-    private void EnviarDatosventaSeleccionada(int idVenta) {
+    private void EnviarDatosVentaSeleccionada(int idVenta) {
         try {
             Connection con = Conexion.conectar();
             PreparedStatement pst = con.prepareStatement(
-                    "select cv.idCabeceraVenta, cv.idCliente,  concat(c.nombre, ' ',c.apellido) as cliente,"
-                            + " cv.valorPagar, cv.fechaVenta , cv.estado as cv, "
-                            + "tb_cliente as c from tb_cabecera_venta where cv.idCabeceraVenta = '" + idVenta + "' and cv.idCliente = c.idCliente;");
+                    "select cv.idCabeceraVenta, cv.idCliente, concat(c.nombre, ' ', c.apellido) as cliente, "
+                    + "cv.valorPagar, cv.fechaVenta, cv.estado  from tb_cabecera_venta as cv, "
+                    + "tb_cliente as c where  cv.idCabeceraVenta = '" + idVenta + "' and cv.idCliente = c.idCliente;");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                
                 jComboBox_cliente.setSelectedItem(rs.getString("cliente"));
                 txt_total_pagar.setText(rs.getString("valorPagar"));
                 txt_fecha.setText(rs.getString("fechaVenta"));
                 int estado = rs.getInt("estado");
-                if(estado== 1){
-               jComboBox_estado.setSelectedItem("Activo");
-                
-                }else{
-                
-                jComboBox_estado.setSelectedItem("Inactivo");
+                if (estado == 1) {
+                    jComboBox_estado.setSelectedItem("Activo");
+                } else {
+                    jComboBox_estado.setSelectedItem("Inactivo");
                 }
-               
             }
             con.close();
         } catch (SQLException e) {
             System.out.println("Error al seleccionar venta: " + e);
         }
     }
-    //Metodo para cargar los clientes en el jComboBox
-     
+    
+    /*
+    Metodo para cargar los clientes en el jComboBox
+     */
     private void CargarComboClientes() {
         Connection cn = Conexion.conectar();
         String sql = "select * from tb_cliente";
         Statement st;
-
         try {
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -396,6 +378,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 jComboBox_cliente.addItem(rs.getString("nombre") + " " + rs.getString("apellido"));
             }
+            cn.close();
         } catch (SQLException e) {
             System.out.println("¡Error al cargar clientes, !" + e);
         }
