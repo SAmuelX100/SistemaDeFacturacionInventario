@@ -4,12 +4,6 @@
  */
 package controlador;
 
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import Conexion.Conexion;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -19,12 +13,18 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import Conexion.Conexion;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import vista.InterFacturacion;
@@ -47,8 +47,8 @@ public class ventaPDF {
     //metodo para obtener datos de clientes
     public void DatosCliente(int idCliente) {
 
-        Connection cn = (Connection) Conexion.conectar();
-        String sql = "select * from tb_cliente= '" + idCliente + "'";
+        Connection cn = Conexion.conectar();
+        String sql = "select * from tb_cliente where idCliente = '" + idCliente + "'";
         Statement st;
 
         try {
@@ -77,7 +77,7 @@ public class ventaPDF {
         try {
             // cargar la fecha actual    
             Date date = new Date();
-            fechaActual = new SimpleDateFormat("yyyy/MM/dd").format(date);
+            fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(date);
             // cambiar el formato de la fecha de / a _    
             String fechaNueva = "";
             for (int i = 0; i < fechaActual.length(); i++) {
