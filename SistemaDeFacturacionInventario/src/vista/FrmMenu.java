@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
+import controlador.Reportes;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 
@@ -227,21 +228,41 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem13_reporteClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte1.png"))); // NOI18N
         jMenuItem13_reporteClientes.setText("Reportes Clientes");
         jMenuItem13_reporteClientes.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem13_reporteClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13_reporteClientesActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem13_reporteClientes);
 
         jMenuItem14_reporteCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte1.png"))); // NOI18N
         jMenuItem14_reporteCategorias.setText("Reportes Categorías");
         jMenuItem14_reporteCategorias.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem14_reporteCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14_reporteCategoriasActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem14_reporteCategorias);
 
         jMenuItem15_reporteProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte1.png"))); // NOI18N
         jMenuItem15_reporteProductos.setText("Reportes Productos");
         jMenuItem15_reporteProductos.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem15_reporteProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15_reporteProductosActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem15_reporteProductos);
 
         jMenuItem16_reporteVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte1.png"))); // NOI18N
         jMenuItem16_reporteVentas.setText("Reportes Ventas");
         jMenuItem16_reporteVentas.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem16_reporteVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16_reporteVentasActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem16_reporteVentas);
 
         jMenuBar1.add(jMenu6);
@@ -254,6 +275,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem17_verHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
         jMenuItem17_verHistorial.setText("Ver Historial");
         jMenuItem17_verHistorial.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem17_verHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17_verHistorialActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem17_verHistorial);
 
         jMenuBar1.add(jMenu7);
@@ -350,6 +376,32 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane_menu.add(interGestionarVentas);
         interGestionarVentas.setVisible(true);
     }//GEN-LAST:event_jMenuItem12_gestionarVentaActionPerformed
+
+    private void jMenuItem13_reporteClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13_reporteClientesActionPerformed
+        Reportes reporte = new Reportes();
+        reporte.ReportesClientes();
+    }//GEN-LAST:event_jMenuItem13_reporteClientesActionPerformed
+
+    private void jMenuItem14_reporteCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14_reporteCategoriasActionPerformed
+       Reportes reporte = new Reportes();
+       reporte.ReportesCategorias();
+    }//GEN-LAST:event_jMenuItem14_reporteCategoriasActionPerformed
+
+    private void jMenuItem15_reporteProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15_reporteProductosActionPerformed
+        Reportes reporte = new Reportes();
+        reporte.ReportesProductos();
+    }//GEN-LAST:event_jMenuItem15_reporteProductosActionPerformed
+
+    private void jMenuItem16_reporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16_reporteVentasActionPerformed
+        Reportes reporte = new Reportes();
+        reporte.ReportesVentas();
+    }//GEN-LAST:event_jMenuItem16_reporteVentasActionPerformed
+
+    private void jMenuItem17_verHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17_verHistorialActionPerformed
+        InterGraficas interGraficas = new InterGraficas();
+        jDesktopPane_menu.add(interGraficas);
+        interGraficas.setVisible(true);
+    }//GEN-LAST:event_jMenuItem17_verHistorialActionPerformed
 
     /**
      * @param args the command line arguments
