@@ -56,7 +56,7 @@ public class ventaPDF {
             st = (Statement) cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                nombreCliente = rs.getString("nombre") + " " + rs.getString("apellido");
+                nombreCliente = rs.getString("nombre") + "_" + rs.getString("apellido");
                 cedulaCliente = rs.getString("cedula");
                 telefonoCliente = rs.getString("telefono");
                 direccionCliente = rs.getString("direccion");
@@ -254,7 +254,7 @@ public class ventaPDF {
           //Mensaje
           Paragraph mensaje =new Paragraph();
           mensaje.add(Chunk.NEWLINE);
-          mensaje.add("!Gracias por su Compra!, Feliz dia" );
+          mensaje.add("¡Gracias por su Compra!, Feliz dia" );
           mensaje.setAlignment(Element.ALIGN_CENTER);
           doc.add(mensaje);
           
