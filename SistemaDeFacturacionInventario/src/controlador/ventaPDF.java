@@ -124,8 +124,8 @@ public class ventaPDF {
             String rnc = "01030587954";
             String nombre = "ProComsa";
             String telefono = "8091234567";
-            String direccion = "c/ 27 de Febrero esq. Linconl";
-            String razon = "La lealtad del servicios en nuestras manos.";
+            String direccion = "c/ 27 de Febrero esq. Lincoln";
+            String razon = "La lealtad del servicio en nuestras manos.";
             
             Encabezado.addCell("");//celda vacia
             Encabezado.addCell("RNC:" + rnc + "\nNOMBRE:" + nombre + "\nTELEFONO:" + telefono + "\nDIRECCION:"+ direccion + "\nRAZON:" + razon);
