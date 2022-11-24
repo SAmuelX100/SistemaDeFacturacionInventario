@@ -5,6 +5,7 @@
 package vista;
 import controlador.Reportes;
 import java.awt.Dimension;
+import java.io.IOException;
 import javax.swing.JDesktopPane;
 
 /**
@@ -379,22 +380,42 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem13_reporteClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13_reporteClientesActionPerformed
         Reportes reporte = new Reportes();
-        reporte.ReportesClientes();
+        
+        try {
+            reporte.ReportesClientes();
+        } catch (IOException ex) {
+            System.out.println("IOException en FrmMenu.jMenuItem13_reporteClientesActionPerformed");
+        }
     }//GEN-LAST:event_jMenuItem13_reporteClientesActionPerformed
 
     private void jMenuItem14_reporteCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14_reporteCategoriasActionPerformed
        Reportes reporte = new Reportes();
-       reporte.ReportesCategorias();
+       
+        try {
+            reporte.ReportesCategorias();
+        } catch (IOException ex) {
+            System.out.println("IOException en FrmMenu.jMenuItem14_reporteCategoriasActionPerformed");
+        }
     }//GEN-LAST:event_jMenuItem14_reporteCategoriasActionPerformed
 
     private void jMenuItem15_reporteProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15_reporteProductosActionPerformed
         Reportes reporte = new Reportes();
-        reporte.ReportesProductos();
+        
+        try {
+            reporte.ReportesProductos();
+        } catch (IOException ex) {
+            System.out.println("IOException en FrmMenu.jMenuItem15_reporteProductosActionPerformed");
+        }
     }//GEN-LAST:event_jMenuItem15_reporteProductosActionPerformed
 
     private void jMenuItem16_reporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16_reporteVentasActionPerformed
         Reportes reporte = new Reportes();
-        reporte.ReportesVentas();
+        
+        try {
+            reporte.ReportesVentas();
+        } catch (IOException ex) {
+            System.out.println("IOException en FrmMenu.jMenuItem16_reporteVentasActionPerformed");
+        }
     }//GEN-LAST:event_jMenuItem16_reporteVentasActionPerformed
 
     private void jMenuItem17_verHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17_verHistorialActionPerformed
