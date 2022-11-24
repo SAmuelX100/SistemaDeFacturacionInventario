@@ -11,9 +11,12 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import Conexion.Conexion;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,13 +24,17 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Reportes {
+    public String ruta;
 
-    //metodo para crear reportes de los clientes registrados en el sistema
-    public void ReportesClientes() {
+    public Reportes() {
+        this.ruta = System.getProperty("user.home");
+    }
+    public void ReportesClientes() throws IOException {
         Document documento = new Document();
+        
         try {
-            String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte_Clientes.pdf"));
+            crearDirectorio();
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Douments/Reportes/Reporte_Clientes.pdf"));
             Image header = Image.getInstance("src/img/header1.jpg");
             header.scaleToFit(650, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
@@ -80,14 +87,17 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        
+        abrirVentana();
     }
 
-    //metodo para crear reportes de los productos registrados en el sistema
-    public void ReportesProductos() {
+    // Metodo para crear reportes de los productos registrados en el sistema
+    public void ReportesProductos() throws IOException {
         Document documento = new Document();
+        
         try {
-            String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte_Productos.pdf"));
+            crearDirectorio();
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Documents/Reportes/Reporte_Productos.pdf"));
             Image header = Image.getInstance("src/img/header1.jpg");
             header.scaleToFit(650, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
@@ -149,14 +159,17 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        
+        abrirVentana();
     }
 
-    //metodo para crear reportes de los categorias registrados en el sistema
-    public void ReportesCategorias() {
+    // Metodo para crear reportes de los categorias registrados en el sistema
+    public void ReportesCategorias() throws IOException {
         Document documento = new Document();
+        
         try {
-            String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte_Categorias.pdf"));
+            crearDirectorio();
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Documents/Reportes/Reporte_Categorias.pdf"));
             Image header = Image.getInstance("src/img/header1.jpg");
             header.scaleToFit(650, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
@@ -205,16 +218,17 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        
+        abrirVentana();
     }
-
     
-    //metodo para crear reportes de las ventas registrados en el sistema
-   
-    public void ReportesVentas() {
+    // Metodo para crear reportes de las ventas registrados en el sistema
+    public void ReportesVentas() throws IOException {
         Document documento = new Document();
+        
         try {
-            String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte_Ventas.pdf"));
+            crearDirectorio();
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Documents/Reportes/Reporte_Ventas.pdf"));
             Image header = Image.getInstance("src/img/header1.jpg");
             header.scaleToFit(650, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
@@ -273,6 +287,28 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        
+        abrirVentana();
     }
-
+    
+    public void crearDirectorio() throws IOException {
+        if (!new File(ruta + "/Documents/Reportes").exists())
+            Files.createDirectories(Paths.get(ruta + "/Documents/Reportes"));
+    }
+    
+    public void abrirVentana() throws IOException {
+        String str = ruta + "/Documents/Reportes";
+        String[] ventana = {"explorer", separatorsToSystem(str)};
+        Runtime.getRuntime().exec(ventana);
+    }
+    
+    public String separatorsToSystem(String str) {
+    if (str == null) 
+        return null;
+    if (File.separatorChar=='\\') {
+        return str.replace('/', File.separatorChar);
+    } else {
+        return str.replace('\\', File.separatorChar);
+    }
+}
 }
