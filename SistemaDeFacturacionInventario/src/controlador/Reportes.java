@@ -303,12 +303,13 @@ public class Reportes {
     }
     
     public String separadoresDeSistema(String str) {
-    if (str == null) 
-        return null;
-    if (File.separatorChar=='\\') {
-        return str.replace('/', File.separatorChar);
-    } else {
-        return str.replace('\\', File.separatorChar);
+        if (str == null) {
+            return null;
+        }
+        if (File.separatorChar == '\\') {
+            return str.replace('/', File.separatorChar);
+        } else {
+            return str.replace('\\', File.separatorChar);
+        }
     }
-}
 }
