@@ -298,11 +298,11 @@ public class Reportes {
     
     public void abrirVentana() throws IOException {
         String str = ruta + "/Documents/Reportes";
-        String[] ventana = {"explorer", separatorsToSystem(str)};
+        String[] ventana = {"explorer", separadoresDeSistema(str)};
         Runtime.getRuntime().exec(ventana);
     }
     
-    public String separatorsToSystem(String str) {
+    public String separadoresDeSistema(String str) {
     if (str == null) 
         return null;
     if (File.separatorChar=='\\') {
