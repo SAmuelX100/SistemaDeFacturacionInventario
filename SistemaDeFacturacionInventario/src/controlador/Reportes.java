@@ -34,7 +34,7 @@ public class Reportes {
         
         try {
             crearDirectorio();
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Douments/Reportes/Reporte_Clientes.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Documents/Reportes/Reporte_Clientes.pdf"));
             Image header = Image.getInstance("src/img/header1.jpg");
             header.scaleToFit(650, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
