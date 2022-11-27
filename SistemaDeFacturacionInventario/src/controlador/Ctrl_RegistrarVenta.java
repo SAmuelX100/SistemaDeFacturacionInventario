@@ -14,19 +14,17 @@ import java.sql.ResultSet;
  */
 public class Ctrl_RegistrarVenta {
     // Ultimo id de la cabcera
-    
     public static int idCabeceraRegistrada;
     java.math.BigDecimal iDColVar;
     
     /* 
     Metodo para guardar la cabecera de venta
     */
-        public boolean guardar(CabeceraVenta objeto) {
+    public boolean guardar(CabeceraVenta objeto) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
 
         try {
-
             PreparedStatement consulta = cn.prepareStatement("insert into tb_cabecera_venta values (?,?,?,?,?)", 
                     Statement.RETURN_GENERATED_KEYS);
             consulta.setInt(1, 0);//id;
@@ -53,15 +51,12 @@ public class Ctrl_RegistrarVenta {
         return respuesta;
     }
         
-        /* 
-    Metodo para guardar el detalle de venta
-    */
+    // Metodo para guardar el detalle de venta
     public boolean guardarDetalle(DetalleVenta objeto) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
 
         try {
-
             PreparedStatement consulta = cn.prepareStatement("insert into tb_detalle_venta values (?,?,?,?,?,?,?,?,?,?)");
             consulta.setInt(1, 0); // ID;
             consulta.setInt(2, idCabeceraRegistrada);
@@ -79,26 +74,21 @@ public class Ctrl_RegistrarVenta {
             }
 
             cn.close();
-
         } catch (java.sql.SQLException e) {
             System.out.println("Error al guardar cliente" + e);
         }
 
         return respuesta;
-
     }
     
     public boolean actualizar(CabeceraVenta objeto, int idCabeceraVenta) {
         boolean respuesta = false;
-
         Connection cn = Conexion.conectar();
 
         try {
-
             PreparedStatement consulta = cn.prepareStatement("update tb_cabecera_venta set idCliente =?, estado=? "
                     + "where idCabeceraVenta = '" + idCabeceraVenta + "'");
             consulta.setInt(1, objeto.getIdCliente());
-            
             consulta.setInt(2, objeto.getEstado());
 
             if (consulta.executeUpdate() > 0) {
@@ -106,12 +96,10 @@ public class Ctrl_RegistrarVenta {
             }
 
             cn.close();
-
         } catch (java.sql.SQLException e) {
             System.out.println("Error al actualizar cabecera de venta" + e);
         }
 
         return respuesta;
-
     }
 }

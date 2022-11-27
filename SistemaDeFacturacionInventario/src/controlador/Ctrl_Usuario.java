@@ -14,14 +14,12 @@ import modelo.Usuario;
  * @author Ezequiel R
  */
 public class Ctrl_Usuario {
-
-    // metodo para guardar nuevo usuario 
+    // Metodo para guardar nuevo usuario 
     public boolean guardar(Usuario objeto) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
 
         try {
-
             PreparedStatement consulta = cn.prepareStatement("insert into tb_usuario values (?,?,?,?,?,?,?)");
             consulta.setInt(1, 0);//id;
             consulta.setString(2, objeto.getNombre());
@@ -36,20 +34,19 @@ public class Ctrl_Usuario {
             }
 
             cn.close();
-
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error al guardar usuario");
         }
 
         return respuesta;
-
     }
 
-    //metod para decir que existe un usuario.
+    // Metodo para decir que existe un usuario.
     public boolean existeUsuario(String usuario) {
         boolean respuesta = false;
         String sql = "select usuario from tb_usuario where usuario = '" + usuario + "';";
         Statement st;
+        
         try {
 
             Connection cn = Conexion.conectar();
@@ -59,25 +56,24 @@ public class Ctrl_Usuario {
             while (rs.next()) {
                 respuesta = true;
             }
-
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error al consultar usuario");
         }
+        
         return respuesta;
-
     }
 
-    //metodo para iniciar sesion
+    // Metodo para iniciar sesion
     public boolean loginUser(Usuario objeto) {
         boolean respuesta = false;
-
         Connection cn = Conexion.conectar();
         String sql = "select  usuario, password from tb_usuario where usuario = '" + objeto.getUsuario() + "' and password ='" + objeto.getPassword() + "'";
         Statement st;
+        
         try {
-
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
+            
             while (rs.next()) {
                 respuesta = true;
             }
@@ -85,17 +81,16 @@ public class Ctrl_Usuario {
             System.out.println("Error al inicial sesion");
             JOptionPane.showMessageDialog(null, "Error al inicial sesion");
         }
+        
         return respuesta;
-
     }
 
-     //metodo para actualizar un usuario
-    
+    // Metodo para actualizar un usuario
     public boolean actualizar(Usuario objeto, int idUsuario) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
+        
         try {
-
             PreparedStatement consulta = cn.prepareStatement("update tb_usuario set nombre=?, apellido = ?, usuario = ?, password= ?, telefono = ?, estado = ? where idUsuario ='" + idUsuario + "'");
             consulta.setString(1, objeto.getNombre());
             consulta.setString(2, objeto.getApellido());
@@ -107,17 +102,20 @@ public class Ctrl_Usuario {
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
+            
             cn.close();
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error al actualizar usuario: " + e);
         }
+        
         return respuesta;
     }
 
-    // metodo para eliminar un usuario
+    // Metodo para eliminar un usuario
     public boolean eliminar(int idUsuario) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
+        
         try {
             PreparedStatement consulta = cn.prepareStatement(
                     "delete from tb_usuario where idUsuario ='" + idUsuario + "'");
@@ -126,12 +124,11 @@ public class Ctrl_Usuario {
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
+            
             cn.close();
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error al eliminar usuario: " + e);
         }
         return respuesta;
     }
-       
-    
 }
