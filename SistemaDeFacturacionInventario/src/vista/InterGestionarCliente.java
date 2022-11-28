@@ -58,7 +58,6 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jTable_clientes = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton_actualizar = new javax.swing.JButton();
-        jButton_eliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
@@ -70,6 +69,8 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         txt_apellido = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox_estado = new javax.swing.JComboBox<>();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setClosable(true);
@@ -118,16 +119,6 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton_eliminar.setBackground(new java.awt.Color(255, 51, 51));
-        jButton_eliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, 80, -1));
-
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, 130, 270));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,6 +155,19 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 170, -1));
         jPanel3.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 170, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Estado:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 90, -1));
+
+        jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Estado:", "Activo", "Inactivo" }));
+        jComboBox_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_estadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 170, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 80));
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 460));
 
@@ -198,33 +202,21 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-       Ctrl_Cliente controlCliente = new Ctrl_Cliente();
-        if (idCliente == 0) {
-            JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
-        } else {
-            if (!controlCliente.eliminar(idCliente)) {
-                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
-                this.CargarTablaClientes();
-                this.Limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "¡Error al eliminar cliente!");
-                this.Limpiar();
-            }
-        } 
-      
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
+    private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_estadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_actualizar;
-    private javax.swing.JButton jButton_eliminar;
+    private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -246,7 +238,6 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         txt_apellido.setText("");
         txt_direccion.setText("");
         txt_cedula.setText ("");
-        
     }
 
       
