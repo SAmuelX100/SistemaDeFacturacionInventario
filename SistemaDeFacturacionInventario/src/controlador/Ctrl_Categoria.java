@@ -61,8 +61,9 @@ public class Ctrl_Categoria {
         Connection cn = Conexion.conectar();
 
         try {
-            PreparedStatement consulta = cn.prepareStatement("update tb_categoria set descripcion=? where idCategoria = '"+ idCategoria + "'");
+            PreparedStatement consulta = cn.prepareStatement("update tb_categoria set descripcion=?, estado=?  where idCategoria = '"+ idCategoria + "'");
             consulta.setString(1, objeto.getDescripcion());
+            consulta.setInt(2, objeto.getEstado());
            
             if (consulta.executeUpdate() > 0)
                 respuesta = true;

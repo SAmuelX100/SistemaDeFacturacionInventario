@@ -268,7 +268,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         this.txt_total_pagar.setText("");
         this.txt_fecha.setText("");
         this.jComboBox_cliente.setSelectedItem("Seleccione cliente:");
-        this.jComboBox_estado.setSelectedItem("Activo");
+        this.jComboBox_estado.setSelectedItem("Seleccione Estado:");
         idCliente = 0;
     }
 

@@ -33,7 +33,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
 
     public InterGestionarProducto() {
         initComponents();
-        this.setSize(new Dimension(900, 500));
+        this.setSize(new Dimension(1190, 500));
         this.setTitle("Gestionar Productos");
         
         this.CargarTablaProductos();
@@ -42,7 +42,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         //insertar imagen en nuestro JLabel
         
         ImageIcon wallpaper = new ImageIcon("src/img/wavy-gradient-dark-green.png");
-        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(900, 500, WIDTH));
+        Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(1180, 500, WIDTH));
         jLabel_wallpaper.setIcon(icono);
         this.repaint();
         
@@ -63,7 +63,6 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jTable_productos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton_actualizar = new javax.swing.JButton();
-        jButton_eliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
@@ -77,12 +76,15 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         txt_descripcion = new javax.swing.JTextField();
         jComboBox_itbis = new javax.swing.JComboBox<>();
         jComboBox_categoria = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox_estado = new javax.swing.JComboBox<>();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setPreferredSize(new java.awt.Dimension(1192, 496));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -107,9 +109,9 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_productos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 710, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1000, 250));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 730, 270));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1020, 270));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -125,17 +127,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton_eliminar.setBackground(new java.awt.Color(255, 51, 51));
-        jButton_eliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, 80, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, 130, 270));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 50, 130, 270));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -145,6 +137,12 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombre:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, -1));
+
+        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreActionPerformed(evt);
+            }
+        });
         jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -176,13 +174,26 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jPanel3.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 170, -1));
 
         jComboBox_itbis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ITBIS:", "No gravado por ITBIS:", "16%", "18%" }));
-        jPanel3.add(jComboBox_itbis, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 150, -1));
+        jPanel3.add(jComboBox_itbis, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 170, -1));
 
         jComboBox_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoria: ", "Item 3", "Item 4" }));
-        jPanel3.add(jComboBox_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, 150, -1));
+        jPanel3.add(jComboBox_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 170, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 80));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 460));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Estado:");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 90, -1));
+
+        jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Estado:", "Activo", "Inactivo" }));
+        jComboBox_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_estadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 170, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 1160, 80));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,8 +204,10 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         Ctrl_Producto controlProducto = new Ctrl_Producto();
         String itbis = "";
         String categoria = "";
+        String estado;
         itbis = jComboBox_itbis.getSelectedItem().toString().trim();
         categoria = jComboBox_categoria.getSelectedItem().toString().trim();
+        estado = jComboBox_estado.getSelectedItem().toString().trim();
         
         //validar campos de text
         if (txt_nombre.getText().isEmpty() || txt_cantidad.getText().isEmpty() || txt_precio.getText().equals("")) {
@@ -255,7 +268,11 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
                         //idCategoria - cargar metodo
                         this.IdCategoria();
                         producto.setIdCategoria(obtenerIdCategoriaCombo);
-                        producto.setEstado(1);
+                        if (estado.equalsIgnoreCase("Activo")) {
+                            producto.setEstado(1);
+                        } else {
+                            producto.setEstado(0);
+                        }
 
                         if (controlProducto.actualizar(producto, idProductos)) {
                             JOptionPane.showMessageDialog(null, "Registro Actualizado");
@@ -285,30 +302,19 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-        Ctrl_Producto controlProducto = new Ctrl_Producto();
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
 
-        if (idProductos == 0) {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto");
-        } else {
-            if (!controlProducto.eliminar(idProductos)) {
-                JOptionPane.showMessageDialog(null, "Producto ha sido eliminado");
-                this.CargarTablaProductos();
-                this.CargarComboCategoria();
-                this.Limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "ERROR AL ELIMINAR");
-            }
-        }
-        
-      
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
+    private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_estadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_actualizar;
-    private javax.swing.JButton jButton_eliminar;
     private javax.swing.JComboBox<String> jComboBox_categoria;
+    private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JComboBox<String> jComboBox_itbis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -317,6 +323,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -338,6 +345,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         txt_descripcion.setText("");
         jComboBox_itbis.setSelectedItem("Seleccione ITBIS:");
         jComboBox_categoria.setSelectedItem("Seleccione Categoria:");
+        this.jComboBox_estado.setSelectedItem("Seleccione Estado:");
     }
 
     //Metodo para cargar categorias en el JCombox
@@ -417,6 +425,17 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
                     
                     }
                     
+                    if (i == 7) {
+                        String estado = String.valueOf(rs.getObject(i + 1));
+                        if (estado.equalsIgnoreCase("1")) {
+                            fila[i] = "Activo";
+                        } else {
+                            fila[i] = "Inactivo";
+                        }
+                    } else {
+                        fila[i] = rs.getObject(i + 1);
+                    }
+                    
                 }
 
                 model.addRow(fila);
@@ -491,6 +510,12 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
                 txt_precio.setText(rs.getString("precio"));
                 txt_descripcion.setText(rs.getString("descripcion"));
                 int itbis = rs.getInt("porcentajeItbis");
+                int estado = rs.getInt("estado");
+                if (estado == 1) {
+                    jComboBox_estado.setSelectedItem("Activo");
+                } else {
+                    jComboBox_estado.setSelectedItem("Inactivo");
+                }
                 
                 switch (itbis) {
 

@@ -238,6 +238,7 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         txt_apellido.setText("");
         txt_direccion.setText("");
         txt_cedula.setText ("");
+        this.jComboBox_estado.setSelectedItem("Seleccione Estado:");
     }
 
       
@@ -268,7 +269,16 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 Object fila[] = new Object[7];
                 for (int i = 0; i < 7; i++) {
-                    fila[i] = rs.getObject(i + 1);
+                    if (i == 6) {
+                        String estado = String.valueOf(rs.getObject(i + 1));
+                        if (estado.equalsIgnoreCase("1")) {
+                            fila[i] = "Activo";
+                        } else {
+                            fila[i] = "Inactivo";
+                        }
+                    } else {
+                        fila[i] = rs.getObject(i + 1);
+                    }
                 }
                 model.addRow(fila);
             }
@@ -309,6 +319,12 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
                 txt_cedula.setText(rs.getString("cedula"));
                 txt_telefono.setText(rs.getString("telefono"));
                 txt_direccion.setText(rs.getString("direccion"));
+                int estado = rs.getInt("estado");
+                if (estado == 1) {
+                    jComboBox_estado.setSelectedItem("Activo");
+                } else {
+                    jComboBox_estado.setSelectedItem("Inactivo");
+                }
             }
             con.close();
         } catch (SQLException e) {

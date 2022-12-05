@@ -46,10 +46,11 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         jTable_categorias = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton_actualizar = new javax.swing.JButton();
-        jButton_eliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_descripcion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox_estado = new javax.swing.JComboBox<>();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setClosable(true);
@@ -98,17 +99,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton_eliminar.setBackground(new java.awt.Color(255, 51, 51));
-        jButton_eliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, 80, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 130, 80));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 130, 50));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -120,7 +111,20 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         jPanel3.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 190, 80));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Estado:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 50, -1));
+
+        jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Estado:", "Activo", "Inactivo" }));
+        jComboBox_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_estadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 170, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 190, 130));
 
         jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/wavy-gradient-dark-green.png"))); // NOI18N
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 360));
@@ -133,55 +137,39 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         if(!txt_descripcion.getText().isEmpty()){
             Categoria categoria = new Categoria();
             Ctrl_Categoria controlCategoria = new Ctrl_Categoria();
+            String estado = jComboBox_estado.getSelectedItem().toString().trim();
             
             categoria.setDescripcion(txt_descripcion.getText().trim());
+            if (estado.equalsIgnoreCase("Activo")) {
+                categoria.setEstado(1);
+            } else {
+                categoria.setEstado(0);
+            }
             
-            if (controlCategoria.actualizar(categoria, idCategoria)){
+            if (controlCategoria.actualizar(categoria, idCategoria)) {
                 JOptionPane.showMessageDialog(null, "Categoria ha sido actualizada");
-                txt_descripcion.setText("");
                 this.CargarTablaCategorias();
+                this.Limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al actualizar");
-            }
-            
-            
-        }else{
+            }   
+        } else{
             JOptionPane.showMessageDialog(null, "Seleccione una categoria para actualizar");
             
-        }
-        
-        
-        
+        }    
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-         if(!txt_descripcion.getText().isEmpty()){
-            Categoria categoria = new Categoria();
-            Ctrl_Categoria controlCategoria = new Ctrl_Categoria();
-            
-            categoria.setDescripcion(txt_descripcion.getText().trim());
-            
-            if (!controlCategoria.eliminar(idCategoria)){
-                JOptionPane.showMessageDialog(null, "Categoria ha sido eliminada");
-                txt_descripcion.setText("");
-                this.CargarTablaCategorias();
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al eliminar categoria");
-            }
-            
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "Seleccione una categoria para eliminar");
-            
-        }
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
+    private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_estadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_actualizar;
-    private javax.swing.JButton jButton_eliminar;
+    private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -213,7 +201,16 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
                 Object fila[] = new Object[3];
 
                 for (int i = 0; i < 3; i++) {
-                    fila[i] = rs.getObject(i + 1);
+                    if (i == 2) {
+                        String estado = String.valueOf(rs.getObject(i + 1));
+                        if (estado.equalsIgnoreCase("1")) {
+                            fila[i] = "Activo";
+                        } else {
+                            fila[i] = "Inactivo";
+                        }
+                    } else {
+                        fila[i] = rs.getObject(i + 1);
+                    }
                 }
 
                 model.addRow(fila);
@@ -251,6 +248,12 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
             
             if (rs.next()){
                 txt_descripcion.setText(rs.getString("descripcion"));
+                int estado = rs.getInt("estado");
+                if (estado == 1) {
+                    jComboBox_estado.setSelectedItem("Activo");
+                } else {
+                    jComboBox_estado.setSelectedItem("Inactivo");
+                }
             }
             
             con.close();
@@ -259,5 +262,11 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
             System.out.println("Error al seleccionar categoria: " + e);
         }
     }
-
+    
+    //Metodo para limpiar
+    private void Limpiar(){
+        this.txt_descripcion.setText("");
+        this.jComboBox_estado.setSelectedItem("Seleccione Estado:");
+        idCategoria = 0;
+    }
 }

@@ -57,7 +57,6 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jTable_usuario = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton_actualizar = new javax.swing.JButton();
-        jButton_eliminar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
@@ -69,6 +68,8 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         txt_apellido = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
         txt_usuario = new javax.swing.JTextField();
+        jComboBox_estado = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setClosable(true);
@@ -117,16 +118,6 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton_eliminar.setBackground(new java.awt.Color(255, 51, 51));
-        jButton_eliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 47, 80, -1));
-
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, 130, 270));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,10 +149,25 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Usuario:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 90, -1));
+
+        txt_password.setEditable(false);
         jPanel3.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 170, -1));
         jPanel3.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 170, -1));
         jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 170, -1));
         jPanel3.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 170, -1));
+
+        jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Estado:", "Activo", "Inactivo" }));
+        jComboBox_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_estadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 170, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Estado:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 90, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 80));
 
@@ -174,6 +180,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
        Usuario usuario = new Usuario();
         Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
+        String estado = jComboBox_estado.getSelectedItem().toString().trim();
 
         if (idUsuario == 0) {
             JOptionPane.showMessageDialog(null, "Seleccione un Usuario");
@@ -188,12 +195,16 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
                 usuario.setUsuario(txt_usuario.getText().trim());
                 usuario.setPassword(txt_password.getText().trim());
                 usuario.setTelefono(txt_telefono.getText().trim());
-                usuario.setEstado(1);
+                if (estado.equalsIgnoreCase("Activo")) {
+                    usuario.setEstado(1);
+                } else {
+                    usuario.setEstado(0);
+                }
 
                 if (controlUsuario.actualizar(usuario, idUsuario)) {
                     JOptionPane.showMessageDialog(null, "¡Datos del usuario actualizados!");
-                    this.Limpiar();
                     this.CargarTablaUsuario();
+                    this.Limpiar();
                     idUsuario = 0;
                     
                 } else {
@@ -205,36 +216,21 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-       Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-
-        if (idUsuario == 0) {
-            JOptionPane.showMessageDialog(null, "Seleccione un usuario");
-        } else {
-            if (!controlUsuario.eliminar(idUsuario)) {
-                JOptionPane.showMessageDialog(null, "Usuario Eliminado");
-                this.CargarTablaUsuario();
-                this.Limpiar();
-                idUsuario = 0;
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al eliminar usuario");
-                this.Limpiar();
-            }
-        }
-      
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
+    private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_estadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_actualizar;
-    private javax.swing.JButton jButton_eliminar;
+    private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -256,7 +252,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         txt_usuario.setText("");
         txt_password.setText("");
         txt_telefono.setText ("");
-        
+        this.jComboBox_estado.setSelectedItem("Seleccione Estado:");
     }
 
     /*
@@ -287,7 +283,16 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
 
                 Object fila[] = new Object[7];
                 for (int i = 0; i < 7; i++) {
-                    fila[i] = rs.getObject(i + 1);
+                    if (i == 6) {
+                        String estado = String.valueOf(rs.getObject(i + 1));
+                        if (estado.equalsIgnoreCase("1")) {
+                            fila[i] = "Activo";
+                        } else {
+                            fila[i] = "Inactivo";
+                        }
+                    } else {
+                        fila[i] = rs.getObject(i + 1);
+                    }
                 }
                 model.addRow(fila);
             }
@@ -328,7 +333,12 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
                 txt_usuario.setText(rs.getString("usuario"));
                 txt_password.setText(rs.getString("password"));
                 txt_telefono.setText(rs.getString("telefono"));
-
+                int estado = rs.getInt("estado");
+                if (estado == 1) {
+                    jComboBox_estado.setSelectedItem("Activo");
+                } else {
+                    jComboBox_estado.setSelectedItem("Inactivo");
+                }
             }
             con.close();
         } catch (SQLException e) {
