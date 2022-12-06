@@ -560,10 +560,10 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField txt_cambio;
     private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_cliente_buscar;
-    private javax.swing.JTextField txt_descuento;
+    public static javax.swing.JTextField txt_descuento;
     private javax.swing.JTextField txt_efectivo;
-    private javax.swing.JTextField txt_itbis;
-    private javax.swing.JTextField txt_subtotal;
+    public static javax.swing.JTextField txt_itbis;
+    public static javax.swing.JTextField txt_subtotal;
     public static javax.swing.JTextField txt_total_pagar;
     // End of variables declaration//GEN-END:variables
 

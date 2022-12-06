@@ -237,7 +237,14 @@ public class ventaPDF {
           //Total a pagar
           Paragraph info=new Paragraph();
           info.add(Chunk.NEWLINE);
-          info.add("Total a pagar:" + InterFacturacion.txt_total_pagar.getText());
+          info.add("Sub-Total: " + InterFacturacion.txt_subtotal.getText());
+          info.setAlignment(Element.ALIGN_RIGHT);
+          info.add(Chunk.NEWLINE);
+          info.add("Descuento: " + InterFacturacion.txt_descuento.getText());
+          info.add(Chunk.NEWLINE);
+          info.add("Itbis: " + InterFacturacion.txt_itbis.getText());
+          info.add(Chunk.NEWLINE);
+          info.add("Total a pagar: " + InterFacturacion.txt_total_pagar.getText());
           info.setAlignment(Element.ALIGN_RIGHT);
           doc.add(info);
           
