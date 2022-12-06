@@ -128,7 +128,7 @@ public class ventaPDF {
             String razon = "La lealtad del servicio en nuestras manos.";
             
             Encabezado.addCell("");//celda vacia
-            Encabezado.addCell("RNC:" + rnc + "\nNOMBRE:" + nombre + "\nTELEFONO:" + telefono + "\nDIRECCION:"+ direccion + "\nRAZON:" + razon);
+            Encabezado.addCell("RNC: " + rnc + "\nNOMBRE: " + nombre + "\nTELÉFONO: " + telefono + "\nDIRECCIÓN: " + direccion + "\nRAZÓN: " + razon);
             Encabezado.addCell(fecha); 
             doc.add((Element) Encabezado);
             
@@ -149,10 +149,10 @@ public class ventaPDF {
           float[] ColumnaCliente = new float[]{25f, 45f, 30f, 40f};
           tablaCliente.setWidths(ColumnaCliente);
           tablaCliente.setHorizontalAlignment(Element.ALIGN_LEFT);
-          PdfPCell cliente1= new PdfPCell(new Phrase("Cedula/RNC;", negrita));
-          PdfPCell cliente2= new PdfPCell(new Phrase("Nombre;", negrita));
-          PdfPCell cliente3= new PdfPCell(new Phrase("Telefono;", negrita));
-          PdfPCell cliente4= new PdfPCell(new Phrase("Direccion;", negrita));
+          PdfPCell cliente1= new PdfPCell(new Phrase("Cedúla/RNC:", negrita));
+          PdfPCell cliente2= new PdfPCell(new Phrase("Nombre:", negrita));
+          PdfPCell cliente3= new PdfPCell(new Phrase("Teléfono:", negrita));
+          PdfPCell cliente4= new PdfPCell(new Phrase("Dirección:", negrita));
           
           //quitar bordes
           cliente1.setBorder(0);
